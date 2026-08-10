@@ -30,12 +30,16 @@ while True:
         # Get bounding box coordinates
         x1,y1,x2,y2 = map(int, box.xyxy[0])
 
-        if class_name == "car" or class_name == "truck":
+        if class_name == "car" or class_name == "bus" or class_name == "person":
+            
+            if class_name == "car": color = (0,255,0)
+            if class_name == "bus": color = (255,0,0)
+            if class_name == "person": color = (0,0,255)
             cv2.rectangle(
                 frame,
                 (x1,y1),
                 (x2,y2),
-                (0,255,0),
+                color,
                 2
             )
 
@@ -48,7 +52,7 @@ while True:
             (x1,y1 -10),
             cv2.FONT_HERSHEY_COMPLEX,
             0.7,
-            (0,255,0),
+            color,
             2
         )    
 
